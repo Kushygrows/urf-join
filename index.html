@@ -2,12 +2,25 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Joining URF Secret Server…</title>
-<meta http-equiv="refresh" content="0; url=steam://run/252490//+client.connect%20100.66.133.48:28015/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join URF Secret Server</title>
 </head>
-<body style="font-family:sans-serif;background:#111;color:#eee;text-align:center;padding-top:15vh">
-<h2>Launching Rust…</h2>
-<p>If nothing happens, <a style="color:#2ecc71" href="steam://run/252490//+client.connect%20100.66.133.48:28015">click here</a>.</p>
-<p>You must be connected to Tailscale first.</p>
+<body style="font-family:sans-serif;background:#111;color:#eee;text-align:center;padding-top:12vh">
+<h2>🟢 Join URF Secret Server</h2>
+<p>Make sure Tailscale says <b>Connected</b> first.</p>
+<button id="go" style="font-size:18px;padding:14px 24px;background:#2ecc71;border:0;border-radius:8px;cursor:pointer">
+📋 Copy command &amp; launch Rust
+</button>
+<p id="msg" style="margin-top:20px"></p>
+<p style="opacity:.7">Command: <code>client.connect 100.66.133.48:28015</code></p>
+<script>
+const cmd = "client.connect 100.66.133.48:28015";
+document.getElementById("go").onclick = async () => {
+  try { await navigator.clipboard.writeText(cmd); } catch (e) {}
+  document.getElementById("msg").innerHTML =
+    "Copied! When Rust loads: press <b>F1</b>, then <b>Ctrl+V</b>, then <b>Enter</b>.";
+  window.location.href = "steam://run/252490";
+};
+</script>
 </body>
 </html>
